@@ -8,6 +8,7 @@ public class HShape extends AbstractShape {
     private int topX = 0;
     private int topY = 0;
    
+ 
 	public HShape(int topX, int topY, int W, int H, Color color) {
 		if (W <= 0 || H <= 0 || color == null) {
 			throw new IllegalArgumentException("Invalid square data");
@@ -60,9 +61,21 @@ public class HShape extends AbstractShape {
 			 y += height/3;
 		 }
 	 }
+	 public HShape getChildren(int i) {
+		 return (HShape) this.children[i];
+	 }
 	 @Override
 	 public void update(int value) {
-		 int ratio = (value)/100;
+		 double ratio = (((double)value)/100);
+//		 HShape child = this.getChildren(3);
+//		 child.topY *= ratio;
+		 HShape child = (HShape) this.children[3];
+		 child.topY *= ratio;
+		 for (int i = 0; i<children.length; i++) {
+				if (this.children[i]!= null) {
+					this.children[i].update(value);
+				}
+		}	
 		 
 	 }
 	 

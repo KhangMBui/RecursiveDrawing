@@ -36,10 +36,10 @@ import javax.swing.event.ChangeListener;
 public class FractalDisplay extends JPanel implements MouseListener, ActionListener, ChangeListener {
 
 	// Width of the inner panel
-	public static final int WIDTH = 750;
+	public static final int WIDTH = 500;
 
 	// Height of the inner panel
-	public static final int HEIGHT = 750;
+	public static final int HEIGHT = 500;
 	
 	//Scale
 	public static final int SCALE = HEIGHT*3/100;
@@ -172,7 +172,6 @@ public class FractalDisplay extends JPanel implements MouseListener, ActionListe
 					break;
 				}
 			}
-
 			switch (which) {
 			case SIERPINSKI_TRIANGLE:
 				// TODO
@@ -181,7 +180,7 @@ public class FractalDisplay extends JPanel implements MouseListener, ActionListe
 				Point a = new Point(WIDTH/2, 0 + SCALE);
 				Point b = new Point(SCALE, HEIGHT-SCALE);
 				Point c = new Point(WIDTH - SCALE, HEIGHT-SCALE);
-				shape = new TShape(a, b, c, getRandomColor());
+				shape = new SierpinskiTriangle(a, b, c, getRandomColor(), 1);
 				break;
 			case H_SHAPE:
 				// TODO

@@ -20,4 +20,4 @@ public interface Shape {
 	//Creates children for the shape
 	void createChildren();
 
-}
+}	

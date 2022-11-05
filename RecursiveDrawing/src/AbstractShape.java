@@ -9,8 +9,6 @@ public abstract class AbstractShape implements Shape {
 	protected AbstractShape[] children;
 	protected Color color;
 
-	protected int totalShape = 1;
-	
 	public AbstractShape() {
 		level = 1;
 	}
@@ -48,7 +46,6 @@ public abstract class AbstractShape implements Shape {
 				}
 				return true;
 			}
-
 			else {
 				return false;
 			}
@@ -97,5 +94,7 @@ public abstract class AbstractShape implements Shape {
 	public void update(int value) {
 
 	}
+
+	
 
 }
