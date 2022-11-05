@@ -39,19 +39,24 @@ public abstract class AbstractShape implements Shape {
 	public boolean addLevel() {
 		// Base case: no children
 		if (children[0] == null) {
+			//Check if reaches max level
 			if (level < maxLevel) {
+				//If not, create children and set their levels
 				this.createChildren();
 				for (int i = 0; i < children.length; i++) {
 					children[i].level = level + 1;
 				}
 				return true;
 			}
+			//Max level: return False
 			else {
 				return false;
 			}
-		} else {
+		} 
+		//If have children:
+		else {
 			boolean b = true;
-			// recursion (call addLevel to children)
+			// recursion (call addLevel to children), go to the children and repeat the steps above
 			for (int i = 0; i < children.length; i++) {
 				b = b && children[i].addLevel();
 			}
@@ -61,13 +66,18 @@ public abstract class AbstractShape implements Shape {
 
 	@Override
 	public boolean removeLevel() {
+		//Base case: have children
 		if (children[0] != null) {
+			//Check if there are grandchildren
+			//If there are not: set all the children to null
 			if (children[0].children[0] == null) {
 				for (int i = 0; i < children.length; i++) {
 					children[i] = null;
 				}
 				return true;
-			} else {
+			} 
+			//If there are grand children, go to the grandchildren and repeat and steps above
+			else {
 				boolean b = true;
 				for (AbstractShape sh : children) {
 					b = b && sh.removeLevel();
