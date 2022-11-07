@@ -4,10 +4,10 @@ import java.awt.Point;
 import java.awt.Polygon;
 
 public class SierpinskiTriangle extends AbstractShape {
-	protected Point a,b,c;
-	protected Color color;
+	private Point a,b,c;
+	
 
-	public SierpinskiTriangle(Point a, Point b, Point c, Color color, int modifyPercent) {
+	public SierpinskiTriangle(Point a, Point b, Point c, Color color) {
 		this.maxLevel = 10;
 		this.a = a;
 		this.b = b;
@@ -50,9 +50,9 @@ public class SierpinskiTriangle extends AbstractShape {
 		Point p = between(a, b);
 		Point q = between(a, c);
 		Point r = between(b, c);
-		children[0] = new SierpinskiTriangle(p, b, r, getRandomColor(), 1);
-		children[1] = new SierpinskiTriangle(q, r, c, getRandomColor(), 1);
-		children[2] = new SierpinskiTriangle(a, p, q, getRandomColor(), 1);
+		children[0] = new SierpinskiTriangle(p, b, r, getRandomColor());
+		children[1] = new SierpinskiTriangle(q, r, c, getRandomColor());
+		children[2] = new SierpinskiTriangle(a, p, q, getRandomColor());
 	}
 	@Override
 	public void update(int value) {
@@ -78,35 +78,37 @@ public class SierpinskiTriangle extends AbstractShape {
 //			if (this.children[i]!= null) {
 //				this.children[i].update(value);
 //			}
-//		}		
-		double ratio = (((double) value)/100);
-		Point p = between(a, b);
-		Point q = between(a, c);
-		Point r = between(b, c);
+//		}	
 		
 		
-		if (children[0] == null) {
-			
-			p.x = (int) (a.x + (b.x - a.x)*ratio);
-			p.y = (int) (a.y + (b.y - a.y)*ratio);
-
-			q.x = (int) (a.x + (c.x - a.x)*ratio);
-			q.y = (int) (a.y + (c.y - a.y)*ratio);
-
-			r.x = (int) (b.x + (c.x - b.x)*ratio);
-			r.y = (int) (b.y + (c.y - b.y)*ratio);
-		
-			this.a = r;
-			this.b = p;
-			this.c = q;
-		}
-		else {
-			for (int i = 0; i<children.length; i++) {
-				if (this.children[i]!= null) {
-					this.children[i].update(value);
-				}
-			}	
-		}
+//		double ratio = (((double) value)/100);
+//		Point p = between(a, b);
+//		Point q = between(a, c);
+//		Point r = between(b, c);
+//		
+//		
+//		if (children[0] == null) {
+//			
+//			p.x = (int) (a.x + (b.x - a.x)*ratio);
+//			p.y = (int) (a.y + (b.y - a.y)*ratio);
+//
+//			q.x = (int) (a.x + (c.x - a.x)*ratio);
+//			q.y = (int) (a.y + (c.y - a.y)*ratio);
+//
+//			r.x = (int) (b.x + (c.x - b.x)*ratio);
+//			r.y = (int) (b.y + (c.y - b.y)*ratio);
+//		
+//			this.a = r;
+//			this.b = p;
+//			this.c = q;
+//		}
+//		else {
+//			for (int i = 0; i<children.length; i++) {
+//				if (this.children[i]!= null) {
+//					this.children[i].update(value);
+//				}
+//			}	
+//		}
 	}
 
 }
